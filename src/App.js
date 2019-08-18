@@ -12,13 +12,22 @@ import Cars from "./components/pages/Cars";
 import "./App.css";
 
 function App() {
-  const [CarsInfo, setCarInfo] = useState({
-    "Toyota Corolla": {
+  const [CarsInfo, setCarInfo] = useState([
+    {
       id: uuid.v1(),
+      model: "Toyota Corolla",
       consumption: 8,
-      gprice: 5.32
+      gprice: 5.32,
+      selected: false
+    },
+    {
+      id: uuid.v1(),
+      model: "Mazda 3",
+      consumption: 8.8,
+      gprice: 5.32,
+      selected: false
     }
-  });
+  ]);
 
   return (
     <div className="App">

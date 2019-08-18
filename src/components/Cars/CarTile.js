@@ -1,25 +1,32 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faGasPump, faCoins } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faGasPump,
+  faCoins,
+  faEdit
+} from "@fortawesome/free-solid-svg-icons";
 
 const CarTile = props => {
-  const { type } = props;
+  const { type, car } = props;
 
-  const EditTile = styled.div`
+  const AddTitle = styled.div`
     width: 150px;
     height: 105px;
     background-color: white;
     color: #1d3557;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
     justify-content: center;
   `;
 
-  const Tile = styled(EditTile)`
+  const Tile = styled(AddTitle)`
     flex-direction: column;
     text-align: left;
     align-items: start;
+    position: relative;
     h2 {
       margin-bottom: 10px;
       font-weight: bold;
@@ -37,21 +44,30 @@ const CarTile = props => {
     }
   `;
 
+  const EditIcon = styled.div`
+    position: absolute;
+    bottom: 4px;
+    right: 3px;
+  `;
+
   return type ? (
-    <EditTile>
+    <AddTitle>
       <FontAwesomeIcon icon={faPlus} size={"4x"} />
-    </EditTile>
+    </AddTitle>
   ) : (
     <Tile>
-      <h2>Toyota Corolla</h2>
+      <h2>{car.model}</h2>
       <Row>
         <FontAwesomeIcon icon={faCoins} />
-        <p>5.32PLN/liter</p>
+        <p>{car.gprice} PLN/liter</p>
       </Row>
       <Row>
         <FontAwesomeIcon icon={faGasPump} />
-        <p>8.1 liters</p>
+        <p>{car.consumption} liters/100km</p>
       </Row>
+      <EditIcon>
+        <FontAwesomeIcon onClick={() => console.log(car)} icon={faEdit} />
+      </EditIcon>
     </Tile>
   );
 };

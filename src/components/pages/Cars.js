@@ -4,10 +4,13 @@ import CarTile from "../Cars/CarTile";
 import styled from "styled-components";
 
 const Cars = props => {
+  const { data, editData } = props;
+
   const Wrapper = styled.div`
     width: 85%;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   `;
 
@@ -16,7 +19,9 @@ const Cars = props => {
       <Title text="Your Cars" />
       <Wrapper>
         {/* Don't pass whole data to props. Render only dynamiclly and with selected props */}
-        <CarTile data={props} />
+        {data.map(car => (
+          <CarTile key={car.id} car={car} />
+        ))}
         <CarTile data={props} type="add" />
       </Wrapper>
     </Fragment>
