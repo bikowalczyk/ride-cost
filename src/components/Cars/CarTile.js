@@ -8,47 +8,49 @@ import {
   faEdit
 } from "@fortawesome/free-solid-svg-icons";
 
+const AddTitle = styled.div`
+  width: 150px;
+  height: 105px;
+  background-color: white;
+  color: #1d3557;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+`;
+
+const Tile = styled(AddTitle)`
+  flex-direction: column;
+  text-align: left;
+  align-items: start;
+  position: relative;
+  h2 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+`;
+
+const Row = styled.div`
+  display: flex;
+  margin-left: 10px;
+  p {
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+`;
+
+const EditIcon = styled.div`
+  position: absolute;
+  bottom: 4px;
+  right: 3px;
+`;
+
 const CarTile = props => {
   const { type, car } = props;
 
-  const AddTitle = styled.div`
-    width: 150px;
-    height: 105px;
-    background-color: white;
-    color: #1d3557;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    justify-content: center;
-  `;
-
-  const Tile = styled(AddTitle)`
-    flex-direction: column;
-    text-align: left;
-    align-items: start;
-    position: relative;
-    h2 {
-      margin-bottom: 10px;
-      font-weight: bold;
-      font-size: 18px;
-      margin-left: 10px;
-    }
-  `;
-
-  const Row = styled.div`
-    display: flex;
-    margin-left: 10px;
-    p {
-      margin-left: 5px;
-      margin-bottom: 10px;
-    }
-  `;
-
-  const EditIcon = styled.div`
-    position: absolute;
-    bottom: 4px;
-    right: 3px;
-  `;
+  // Where should I add a function and a compontent to edit state?
 
   return type ? (
     <AddTitle>

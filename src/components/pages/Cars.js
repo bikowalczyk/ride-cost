@@ -1,18 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Title from "../layout/Title";
 import CarTile from "../Cars/CarTile";
 import styled from "styled-components";
 
+const Wrapper = styled.div`
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
 const Cars = props => {
   const { data, editData } = props;
 
-  const Wrapper = styled.div`
-    width: 85%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  `;
+  // state for knowing when to display edit component!
+  const [isEdit, setisEdit] = useState(false);
 
   return (
     <Fragment>
