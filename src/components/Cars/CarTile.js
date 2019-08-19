@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
+import CarEdit from "./CarEdit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -48,29 +49,33 @@ const EditIcon = styled.div`
 `;
 
 const CarTile = props => {
-  const { type, car } = props;
+  const { type, car, editData, isEdit } = props;
 
-  // Where should I add a function and a compontent to edit state?
+  // Where should I add a function and a compontent to edit state? Here lol
 
   return type ? (
     <AddTitle>
       <FontAwesomeIcon icon={faPlus} size={"4x"} />
     </AddTitle>
   ) : (
-    <Tile>
-      <h2>{car.model}</h2>
-      <Row>
-        <FontAwesomeIcon icon={faCoins} />
-        <p>{car.gprice} PLN/liter</p>
-      </Row>
-      <Row>
-        <FontAwesomeIcon icon={faGasPump} />
-        <p>{car.consumption} liters/100km</p>
-      </Row>
-      <EditIcon>
-        <FontAwesomeIcon onClick={() => console.log(car)} icon={faEdit} />
-      </EditIcon>
-    </Tile>
+    <Fragment>
+      {isEdit ? <CarEdit /> : null}
+
+      <Tile>
+        <h2>{car.model}</h2>
+        <Row>
+          <FontAwesomeIcon icon={faCoins} />
+          <p>{car.gprice} PLN/liter</p>
+        </Row>
+        <Row>
+          <FontAwesomeIcon icon={faGasPump} />
+          <p>{car.consumption} liters/100km</p>
+        </Row>
+        <EditIcon>
+          <FontAwesomeIcon onClick={() => console.log(car)} icon={faEdit} />
+        </EditIcon>
+      </Tile>
+    </Fragment>
   );
 };
 

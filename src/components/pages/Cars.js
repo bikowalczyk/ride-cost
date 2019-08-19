@@ -15,7 +15,7 @@ const Cars = props => {
   const { data, editData } = props;
 
   // state for knowing when to display edit component!
-  const [isEdit, setisEdit] = useState(false);
+  const [isEdit, setisEdit] = useState(true);
 
   return (
     <Fragment>
@@ -23,7 +23,7 @@ const Cars = props => {
       <Wrapper>
         {/* Don't pass whole data to props. Render only dynamiclly and with selected props */}
         {data.map(car => (
-          <CarTile key={car.id} car={car} />
+          <CarTile key={car.id} car={car} editData={editData} isEdit={isEdit} />
         ))}
         <CarTile data={props} type="add" />
       </Wrapper>
