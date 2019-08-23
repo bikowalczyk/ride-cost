@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import CarEdit from "./CarEdit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,9 +49,11 @@ const EditIcon = styled.div`
 `;
 
 const CarTile = props => {
-  const { type, car, editData, isEdit } = props;
+  const { type, car, editData } = props;
+  const [isEdit, setIsEdit] = useState(false);
 
   // Where should I add a function and a compontent to edit state? Here lol
+  // state for knowing when to display edit component!
 
   return type ? (
     <AddTitle>
@@ -59,7 +61,7 @@ const CarTile = props => {
     </AddTitle>
   ) : (
     <Fragment>
-      {isEdit ? <CarEdit car={car} /> : null}
+      {isEdit ? <CarEdit changeedit={setIsEdit} car={car} /> : null}
 
       <Tile>
         <h2>{car.model}</h2>
@@ -71,8 +73,8 @@ const CarTile = props => {
           <FontAwesomeIcon icon={faGasPump} />
           <p>{car.consumption} liters/100km</p>
         </Row>
-        <EditIcon>
-          <FontAwesomeIcon onClick={() => console.log(car)} icon={faEdit} />
+        <EditIcon onClick={() => setIsEdit(true)}>
+          <FontAwesomeIcon icon={faEdit} />
         </EditIcon>
       </Tile>
     </Fragment>

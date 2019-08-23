@@ -63,14 +63,15 @@ const CarEditTile = styled.div`
 `;
 
 const CarEdit = props => {
-  const { car } = props;
+  const { car, changeedit } = props;
+
   return (
     <Fragment>
       <Wrapper />
       <CarEditTile>
         <FontAwesomeIcon
           icon={faCheckCircle}
-          style={{ top: "0px", right: "2px", position: "absolute" }}
+          style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
         />
         <h2>{car.model}</h2>
@@ -84,8 +85,9 @@ const CarEdit = props => {
         </Row>
         <FontAwesomeIcon
           icon={faTimes}
-          style={{ bottom: "0px", right: "2px", position: "absolute" }}
+          style={{ bottom: "0px", right: "6px", position: "absolute" }}
           size="2x"
+          onClick={() => changeedit(false)}
         />
       </CarEditTile>
     </Fragment>
