@@ -59,7 +59,7 @@ const CarTile = props => {
     </AddTitle>
   ) : (
     <Fragment>
-      {isEdit ? <CarEdit /> : null}
+      {isEdit ? <CarEdit car={car} /> : null}
 
       <Tile>
         <h2>{car.model}</h2>
