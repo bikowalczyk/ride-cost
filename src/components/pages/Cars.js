@@ -19,9 +19,10 @@ const Cars = props => {
       <Title text="Your Cars" />
       <Wrapper>
         {/* Don't pass whole data to props. Render only dynamiclly and with selected props */}
-        {data.map(car => (
+        {data.map((car, carIndex) => (
           <CarTile
             key={car.id}
+            carIndex={carIndex}
             car={car}
             carsData={data}
             setCarInfo={setCarInfo}

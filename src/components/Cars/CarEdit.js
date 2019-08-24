@@ -63,22 +63,24 @@ const CarEditTile = styled.div`
 `;
 
 const CarEdit = props => {
-  const { car, changeedit, setCarInfo, carsData } = props;
+  const { car, changeedit, setCarInfo, carsData, carIndex } = props;
 
   // New state for storing input's data with onChange and then update it
 
-  const [state_temp, setState_temp] = useState({ ...car });
+  const [state_temp, setState_temp] = useState([...carsData]);
 
   const handleChange = e => {
     const { name, value } = e.target;
 
-    setState_temp({ ...state_temp, [name]: value });
+    const car_temp = { ...car, [name]: value };
+
+    // setState_temp([car_temp]);
   };
 
   // Function to merge tempState with originalState
 
   const mergeState = () => {
-    setCarInfo(carsData => ({ ...carsData }));
+    setCarInfo(() => ({ ...carsData }));
   };
 
   return (
@@ -95,7 +97,7 @@ const CarEdit = props => {
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
           <input
-            id={car.id}
+            id={carIndex}
             name="gprice"
             maxLength="4"
             defaultValue={car.gprice}
@@ -107,7 +109,7 @@ const CarEdit = props => {
         <Row>
           <FontAwesomeIcon icon={faGasPump} size={"2x"} />
           <input
-            id={car.id}
+            id={carIndex}
             name="consumption"
             maxLength="4"
             defaultValue={car.consumption}
