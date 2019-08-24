@@ -29,6 +29,23 @@ function App() {
     }
   ]);
 
+  const editCar = (id, fuelPrice, fuelConsumption) => {
+    const editedCar = CarsInfo.find(car => car.id === id);
+    const indexOfEdited = CarsInfo.indexOf(editedCar);
+
+    const updatedCarValues = {
+      ...editedCar,
+      id,
+      consumption: fuelConsumption,
+      gprice: fuelPrice
+    };
+
+    const newCars = [...CarsInfo];
+    newCars[indexOfEdited] = updatedCarValues;
+
+    setCarInfo(newCars);
+  };
+
   return (
     <div className="App">
       <Router>
@@ -39,7 +56,12 @@ function App() {
             exact
             path="/cars"
             render={props => (
-              <Cars {...props} data={CarsInfo} setCarInfo={setCarInfo} />
+              <Cars
+                {...props}
+                onEditHandler={editCar}
+                data={CarsInfo}
+                setCarInfo={setCarInfo}
+              />
             )}
           />
         </Switch>

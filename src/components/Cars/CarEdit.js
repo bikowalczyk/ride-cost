@@ -44,43 +44,37 @@ const CarEditTile = styled.div`
   color: #1d3557;
   display: flex;
   flex-direction: column;
-
-
-  
+ 
+ 
+ 
   h2 {
     margin: 10px;
     font-weight: bold;
     font-size: 32px;
     margin-left: 10px;
   }
-
+ 
   input{
     border: 1px solid #1d3557;
-    border-radius: 5px; 
+    border-radius: 5px;
     margin: 0px 5px 0px 10px ;
     width: 50px;
   }
 `;
 
 const CarEdit = props => {
-  const { car, changeedit, setCarInfo, carsData, carIndex } = props;
+  const { car, changeedit, setCarInfo, carsData } = props;
+  const [fuelPrice, setFuelPrice] = useState(car.gprice);
+  const [fuelConsumption, setFuelConsumption] = useState(car.consumption);
 
   // New state for storing input's data with onChange and then update it
 
-  const [state_temp, setState_temp] = useState([...carsData]);
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-
-    const car_temp = { ...car, [name]: value };
-
-    // setState_temp([car_temp]);
+  const handleChangeConsumption = e => {
+    setFuelConsumption(e.target.value);
   };
 
-  // Function to merge tempState with originalState
-
-  const mergeState = () => {
-    setCarInfo(() => ({ ...carsData }));
+  const handleChangePrice = e => {
+    setFuelPrice(e.target.value);
   };
 
   return (
@@ -91,30 +85,32 @@ const CarEdit = props => {
           icon={faCheckCircle}
           style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
-          onClick={mergeState}
+          onClick={() =>
+            props.onEditHandler(car.id, fuelPrice, fuelConsumption)
+          }
         />
         <h2>{car.model}</h2>
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
           <input
-            id={carIndex}
+            id={car.id}
             name="gprice"
             maxLength="4"
-            defaultValue={car.gprice}
+            value={fuelPrice}
             placeholder={car.gprice}
-            onChange={handleChange}
+            onChange={handleChangePrice}
           />{" "}
           <p>PLN/liter</p>
         </Row>
         <Row>
           <FontAwesomeIcon icon={faGasPump} size={"2x"} />
           <input
-            id={carIndex}
+            id={car.id}
             name="consumption"
             maxLength="4"
-            defaultValue={car.consumption}
+            value={fuelConsumption}
             placeholder={car.consumption}
-            onChange={handleChange}
+            onChange={handleChangeConsumption}
           />{" "}
           <p>liters </p>
         </Row>

@@ -49,7 +49,7 @@ const EditIcon = styled.div`
 `;
 
 const CarTile = props => {
-  const { type, car, setCarInfo, carsData, carIndex } = props;
+  const { type, car, setCarInfo, carsData, onEditHandler } = props;
   const [isEdit, setIsEdit] = useState(false);
 
   // Where should I add a function and a compontent to edit state? Here lol
@@ -66,7 +66,7 @@ const CarTile = props => {
           setCarInfo={setCarInfo}
           car={car}
           carsData={carsData}
-          carIndex={carIndex}
+          onEditHandler={onEditHandler}
         />
       ) : null}
 
