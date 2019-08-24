@@ -39,7 +39,7 @@ function App() {
             exact
             path="/cars"
             render={props => (
-              <Cars {...props} data={CarsInfo} editData={setCarInfo} />
+              <Cars {...props} data={CarsInfo} setCarInfo={setCarInfo} />
             )}
           />
         </Switch>

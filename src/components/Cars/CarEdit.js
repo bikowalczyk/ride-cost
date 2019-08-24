@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -63,25 +63,58 @@ const CarEditTile = styled.div`
 `;
 
 const CarEdit = props => {
-  const { car, changeedit } = props;
+  const { car, changeedit, setCarInfo, carsData } = props;
+
+  // New state for storing input's data with onChange and then update it
+
+  const [state_temp, setState_temp] = useState({ ...car });
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+
+    setState_temp({ ...state_temp, [name]: value });
+  };
+
+  // Function to merge tempState with originalState
+
+  const mergeState = () => {
+    setCarInfo(carsData => ({ ...carsData }));
+  };
 
   return (
     <Fragment>
-      <Wrapper />
+      <Wrapper onClick={() => changeedit(false)} />
       <CarEditTile>
         <FontAwesomeIcon
           icon={faCheckCircle}
           style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
+          onClick={mergeState}
         />
         <h2>{car.model}</h2>
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
-          <input maxLength="4" placeholder={car.gprice} /> <p>PLN/liter</p>
+          <input
+            id={car.id}
+            name="gprice"
+            maxLength="4"
+            defaultValue={car.gprice}
+            placeholder={car.gprice}
+            onChange={handleChange}
+          />{" "}
+          <p>PLN/liter</p>
         </Row>
         <Row>
           <FontAwesomeIcon icon={faGasPump} size={"2x"} />
-          <input maxLength="4" placeholder={car.consumption} /> <p>liters </p>
+          <input
+            id={car.id}
+            name="consumption"
+            maxLength="4"
+            defaultValue={car.consumption}
+            placeholder={car.consumption}
+            onChange={handleChange}
+          />{" "}
+          <p>liters </p>
         </Row>
         <FontAwesomeIcon
           icon={faTimes}

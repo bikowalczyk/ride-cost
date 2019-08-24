@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Cars = props => {
-  const { data, editData } = props;
+  const { data, setCarInfo } = props;
 
   return (
     <Fragment>
@@ -20,7 +20,12 @@ const Cars = props => {
       <Wrapper>
         {/* Don't pass whole data to props. Render only dynamiclly and with selected props */}
         {data.map(car => (
-          <CarTile key={car.id} car={car} editData={editData} />
+          <CarTile
+            key={car.id}
+            car={car}
+            carsData={data}
+            setCarInfo={setCarInfo}
+          />
         ))}
         <CarTile data={props} type="add" />
       </Wrapper>

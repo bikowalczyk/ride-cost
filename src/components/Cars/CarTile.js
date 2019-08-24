@@ -49,11 +49,10 @@ const EditIcon = styled.div`
 `;
 
 const CarTile = props => {
-  const { type, car, editData } = props;
+  const { type, car, setCarInfo, carsData } = props;
   const [isEdit, setIsEdit] = useState(false);
 
   // Where should I add a function and a compontent to edit state? Here lol
-  // state for knowing when to display edit component!
 
   return type ? (
     <AddTitle>
@@ -61,7 +60,14 @@ const CarTile = props => {
     </AddTitle>
   ) : (
     <Fragment>
-      {isEdit ? <CarEdit changeedit={setIsEdit} car={car} /> : null}
+      {isEdit ? (
+        <CarEdit
+          changeedit={setIsEdit}
+          setCarInfo={setCarInfo}
+          car={car}
+          carsData={carsData}
+        />
+      ) : null}
 
       <Tile>
         <h2>{car.model}</h2>
