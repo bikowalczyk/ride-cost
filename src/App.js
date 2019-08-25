@@ -29,13 +29,14 @@ function App() {
     }
   ]);
 
-  const editCar = (id, fuelPrice, fuelConsumption) => {
+  const editCar = (id, fuelPrice, fuelConsumption, modelName) => {
     const editedCar = CarsInfo.find(car => car.id === id);
     const indexOfEdited = CarsInfo.indexOf(editedCar);
 
     const updatedCarValues = {
       ...editedCar,
       id,
+      model: modelName,
       consumption: fuelConsumption,
       gprice: fuelPrice
     };

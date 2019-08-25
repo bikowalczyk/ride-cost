@@ -53,21 +53,30 @@ const CarEditTile = styled.div`
     font-size: 32px;
     margin-left: 10px;
   }
- 
-  input{
-    border: 1px solid #1d3557;
-    border-radius: 5px;
-    margin: 0px 5px 0px 10px ;
-    width: 50px;
-  }
+
+`;
+
+const ValueInput = styled.input`
+  border: 1px solid #1d3557;
+  border-radius: 5px;
+  margin: 0px 5px 0px 10px;
+  width: 50px;
+`;
+
+const ModelInput = styled.input`
+  margin: 10px;
+  font-weight: bold;
+  font-size: 32px;
+  margin-left: 10px;
+  width: 100%;
+  color: #1d3557;
 `;
 
 const CarEdit = props => {
-  const { car, changeedit, setCarInfo, carsData } = props;
+  const { car, changeedit, onEditHandler } = props;
   const [fuelPrice, setFuelPrice] = useState(car.gprice);
   const [fuelConsumption, setFuelConsumption] = useState(car.consumption);
-
-  // New state for storing input's data with onChange and then update it
+  const [modelName, setModelName] = useState(car.model);
 
   const handleChangeConsumption = e => {
     setFuelConsumption(e.target.value);
@@ -75,6 +84,10 @@ const CarEdit = props => {
 
   const handleChangePrice = e => {
     setFuelPrice(e.target.value);
+  };
+
+  const handleChangeModel = e => {
+    setModelName(e.target.value);
   };
 
   return (
@@ -85,14 +98,15 @@ const CarEdit = props => {
           icon={faCheckCircle}
           style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
-          onClick={() =>
-            props.onEditHandler(car.id, fuelPrice, fuelConsumption)
-          }
+          onClick={() => {
+            onEditHandler(car.id, fuelPrice, fuelConsumption, modelName);
+            changeedit(false);
+          }}
         />
-        <h2>{car.model}</h2>
+        <ModelInput value={modelName} onChange={handleChangeModel}></ModelInput>
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
-          <input
+          <ValueInput
             id={car.id}
             name="gprice"
             maxLength="4"
@@ -104,7 +118,7 @@ const CarEdit = props => {
         </Row>
         <Row>
           <FontAwesomeIcon icon={faGasPump} size={"2x"} />
-          <input
+          <ValueInput
             id={car.id}
             name="consumption"
             maxLength="4"
