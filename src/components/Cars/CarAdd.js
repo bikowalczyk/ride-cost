@@ -72,11 +72,11 @@ const ModelInput = styled.input`
   color: #1d3557;
 `;
 
-const CarEdit = props => {
+const CarAdd = props => {
   const { car, changeedit, onEditHandler } = props;
-  const [fuelPrice, setFuelPrice] = useState(car.gprice);
-  const [fuelConsumption, setFuelConsumption] = useState(car.consumption);
-  const [modelName, setModelName] = useState(car.model);
+  const [fuelPrice, setFuelPrice] = useState({});
+  const [fuelConsumption, setFuelConsumption] = useState({});
+  const [modelName, setModelName] = useState({});
 
   const handleChangeConsumption = e => {
     setFuelConsumption(e.target.value);
@@ -103,15 +103,15 @@ const CarEdit = props => {
             changeedit(false);
           }}
         />
-        <ModelInput value={modelName} onChange={handleChangeModel}></ModelInput>
+        <ModelInput
+          placeholder="Model name"
+          onChange={handleChangeModel}
+        ></ModelInput>
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
           <ValueInput
-            id={car.id}
             name="gprice"
             maxLength="4"
-            value={fuelPrice}
-            placeholder={car.gprice}
             onChange={handleChangePrice}
           />{" "}
           <p>PLN/liter</p>
@@ -119,11 +119,8 @@ const CarEdit = props => {
         <Row>
           <FontAwesomeIcon icon={faGasPump} size={"2x"} />
           <ValueInput
-            id={car.id}
             name="consumption"
             maxLength="4"
-            value={fuelConsumption}
-            placeholder={car.consumption}
             onChange={handleChangeConsumption}
           />{" "}
           <p>liters </p>
@@ -139,4 +136,4 @@ const CarEdit = props => {
   );
 };
 
-export default CarEdit;
+export default CarAdd;

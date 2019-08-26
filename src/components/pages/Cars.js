@@ -28,7 +28,7 @@ const Cars = props => {
             onEditHandler={props.onEditHandler}
           />
         ))}
-        <CarTile data={props} type="add" />
+        <CarTile data={data} type="add" />
       </Wrapper>
     </Fragment>
   );

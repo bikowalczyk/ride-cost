@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import CarEdit from "./CarEdit";
+import CarAdd from "./CarAdd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -55,9 +56,19 @@ const CarTile = props => {
   // Where should I add a function and a compontent to edit state? Here lol
 
   return type ? (
-    <AddTitle>
-      <FontAwesomeIcon icon={faPlus} size={"4x"} />
-    </AddTitle>
+    <Fragment>
+      <AddTitle onClick={() => setIsEdit(true)}>
+        <FontAwesomeIcon icon={faPlus} size={"4x"} />
+      </AddTitle>
+      {isEdit ? (
+        // I have to create a CarAdd component, which will be mostly copied from CarEdit. This is the best way imo.
+        <CarAdd
+          changeedit={setIsEdit}
+          setCarInfo={setCarInfo}
+          onEditHandler={onEditHandler}
+        />
+      ) : null}
+    </Fragment>
   ) : (
     <Fragment>
       {isEdit ? (
