@@ -126,7 +126,7 @@ const CarEdit = props => {
             placeholder={car.consumption}
             onChange={handleChangeConsumption}
           />{" "}
-          <p>liters </p>
+          <p>liters/100km</p>
         </Row>
         <FontAwesomeIcon
           icon={faTimes}

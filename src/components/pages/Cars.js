@@ -29,7 +29,7 @@ const Cars = props => {
             onAddHandler={onAddHandler}
           />
         ))}
-        <CarTile data={data} type="add" />
+        <CarTile data={data} type="add" onAddHandler={onAddHandler} />
       </Wrapper>
     </Fragment>
   );

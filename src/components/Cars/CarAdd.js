@@ -125,7 +125,7 @@ const CarAdd = props => {
             maxLength="4"
             onChange={handleChangeConsumption}
           />{" "}
-          <p>liters </p>
+          <p>liters/100km</p>
         </Row>
         <FontAwesomeIcon
           icon={faTimes}
