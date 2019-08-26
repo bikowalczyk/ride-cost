@@ -50,7 +50,14 @@ const EditIcon = styled.div`
 `;
 
 const CarTile = props => {
-  const { type, car, setCarInfo, carsData, onEditHandler } = props;
+  const {
+    type,
+    car,
+    setCarInfo,
+    carsData,
+    onEditHandler,
+    onAddHandler
+  } = props;
   const [isEdit, setIsEdit] = useState(false);
 
   // Where should I add a function and a compontent to edit state? Here lol
@@ -61,11 +68,11 @@ const CarTile = props => {
         <FontAwesomeIcon icon={faPlus} size={"4x"} />
       </AddTitle>
       {isEdit ? (
-        // I have to create a CarAdd component, which will be mostly copied from CarEdit. This is the best way imo.
+        // I have to create a new CarAdd component, which will be mostly copied from CarEdit. This is the best way imo.
         <CarAdd
           changeedit={setIsEdit}
           setCarInfo={setCarInfo}
-          onEditHandler={onEditHandler}
+          onAddHandler={onAddHandler}
         />
       ) : null}
     </Fragment>

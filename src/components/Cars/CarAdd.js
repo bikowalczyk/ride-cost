@@ -73,7 +73,7 @@ const ModelInput = styled.input`
 `;
 
 const CarAdd = props => {
-  const { car, changeedit, onEditHandler } = props;
+  const { changeedit, onAddHandler } = props;
   const [fuelPrice, setFuelPrice] = useState({});
   const [fuelConsumption, setFuelConsumption] = useState({});
   const [modelName, setModelName] = useState({});
@@ -99,7 +99,7 @@ const CarAdd = props => {
           style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
           onClick={() => {
-            onEditHandler(car.id, fuelPrice, fuelConsumption, modelName);
+            onAddHandler(fuelPrice, fuelConsumption, modelName);
             changeedit(false);
           }}
         />
@@ -110,6 +110,7 @@ const CarAdd = props => {
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
           <ValueInput
+            placeholder="0.00"
             name="gprice"
             maxLength="4"
             onChange={handleChangePrice}
@@ -119,6 +120,7 @@ const CarAdd = props => {
         <Row>
           <FontAwesomeIcon icon={faGasPump} size={"2x"} />
           <ValueInput
+            placeholder="0.00"
             name="consumption"
             maxLength="4"
             onChange={handleChangeConsumption}

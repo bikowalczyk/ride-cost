@@ -47,6 +47,20 @@ function App() {
     setCarInfo(newCars);
   };
 
+  const addCar = (fuelPrice, fuelConsumption, modelName) => {
+    const updatedCarValues = {
+      id: uuid.v1(),
+      model: modelName,
+      consumption: fuelConsumption,
+      gprice: fuelPrice
+    };
+
+    const newCars = [...CarsInfo];
+    newCars.push(updatedCarValues);
+
+    setCarInfo(newCars);
+  };
+
   return (
     <div className="App">
       <Router>
@@ -60,6 +74,7 @@ function App() {
               <Cars
                 {...props}
                 onEditHandler={editCar}
+                onAddHandler={addCar}
                 data={CarsInfo}
                 setCarInfo={setCarInfo}
               />
