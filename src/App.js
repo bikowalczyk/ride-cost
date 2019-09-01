@@ -12,22 +12,7 @@ import Cars from "./components/pages/Cars";
 import "./App.css";
 
 function App() {
-  const [CarsInfo, setCarInfo] = useState([
-    {
-      id: uuid.v1(),
-      model: "Toyota Corolla",
-      consumption: 8,
-      gprice: 5.32,
-      selected: false
-    },
-    {
-      id: uuid.v1(),
-      model: "Mazda 3",
-      consumption: 8.8,
-      gprice: 5.32,
-      selected: false
-    }
-  ]);
+  const [CarsInfo, setCarInfo] = useState([]);
 
   const editCar = (id, fuelPrice, fuelConsumption, modelName) => {
     const editedCar = CarsInfo.find(car => car.id === id);
@@ -43,6 +28,16 @@ function App() {
 
     const newCars = [...CarsInfo];
     newCars[indexOfEdited] = updatedCarValues;
+
+    setCarInfo(newCars);
+  };
+
+  const deleteCar = id => {
+    const editedCar = CarsInfo.find(car => car.id === id);
+    const indexOfEdited = CarsInfo.indexOf(editedCar);
+
+    const newCars = [...CarsInfo];
+    newCars.splice(indexOfEdited, 1);
 
     setCarInfo(newCars);
   };
@@ -74,6 +69,7 @@ function App() {
               <Cars
                 {...props}
                 onEditHandler={editCar}
+                onDeleteHandler={deleteCar}
                 onAddHandler={addCar}
                 data={CarsInfo}
                 setCarInfo={setCarInfo}

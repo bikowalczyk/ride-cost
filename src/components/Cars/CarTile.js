@@ -56,7 +56,8 @@ const CarTile = props => {
     setCarInfo,
     carsData,
     onEditHandler,
-    onAddHandler
+    onAddHandler,
+    onDeleteHandler
   } = props;
   const [isEdit, setIsEdit] = useState(false);
 
@@ -85,6 +86,7 @@ const CarTile = props => {
           car={car}
           carsData={carsData}
           onEditHandler={onEditHandler}
+          onDeleteHandler={onDeleteHandler}
         />
       ) : null}
 

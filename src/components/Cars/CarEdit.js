@@ -73,7 +73,7 @@ const ModelInput = styled.input`
 `;
 
 const CarEdit = props => {
-  const { car, changeedit, onEditHandler } = props;
+  const { car, changeedit, onEditHandler, onDeleteHandler } = props;
   const [fuelPrice, setFuelPrice] = useState(car.gprice);
   const [fuelConsumption, setFuelConsumption] = useState(car.consumption);
   const [modelName, setModelName] = useState(car.model);
@@ -132,7 +132,7 @@ const CarEdit = props => {
           icon={faTimes}
           style={{ bottom: "0px", right: "6px", position: "absolute" }}
           size="2x"
-          onClick={() => changeedit(false)}
+          onClick={() => onDeleteHandler(car.id)}
         />
       </CarEditTile>
     </Fragment>

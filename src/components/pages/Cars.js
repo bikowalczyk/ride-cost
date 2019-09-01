@@ -12,7 +12,13 @@ const Wrapper = styled.div`
 `;
 
 const Cars = props => {
-  const { data, setCarInfo, onEditHandler, onAddHandler } = props;
+  const {
+    data,
+    setCarInfo,
+    onEditHandler,
+    onAddHandler,
+    onDeleteHandler
+  } = props;
 
   return (
     <Fragment>
@@ -27,6 +33,7 @@ const Cars = props => {
             setCarInfo={setCarInfo}
             onEditHandler={onEditHandler}
             onAddHandler={onAddHandler}
+            onDeleteHandler={onDeleteHandler}
           />
         ))}
         <CarTile data={data} type="add" onAddHandler={onAddHandler} />

@@ -2,7 +2,6 @@ import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTimes,
   faGasPump,
   faCoins,
   faCheckCircle
@@ -127,12 +126,6 @@ const CarAdd = props => {
           />{" "}
           <p>liters/100km</p>
         </Row>
-        <FontAwesomeIcon
-          icon={faTimes}
-          style={{ bottom: "0px", right: "6px", position: "absolute" }}
-          size="2x"
-          onClick={() => changeedit(false)}
-        />
       </CarEditTile>
     </Fragment>
   );
