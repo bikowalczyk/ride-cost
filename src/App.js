@@ -16,11 +16,6 @@ function App() {
     JSON.parse(localStorage.getItem("cars") || "[]")
   );
 
-  // Get state from LS
-  // useEffect(() => {
-  //   localStorage.setItem("cars", JSON.stringify(CarsInfo));
-  // });
-
   const editCar = (id, fuelPrice, fuelConsumption, modelName) => {
     const editedCar = CarsInfo.find(car => car.id === id);
     const indexOfEdited = CarsInfo.indexOf(editedCar);
