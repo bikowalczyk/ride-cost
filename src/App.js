@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +12,14 @@ import Cars from "./components/pages/Cars";
 import "./App.css";
 
 function App() {
-  const [CarsInfo, setCarInfo] = useState([]);
+  const [CarsInfo, setCarInfo] = useState(
+    JSON.parse(localStorage.getItem("cars") || "[]")
+  );
+
+  // Get state from LS
+  // useEffect(() => {
+  //   localStorage.setItem("cars", JSON.stringify(CarsInfo));
+  // });
 
   const editCar = (id, fuelPrice, fuelConsumption, modelName) => {
     const editedCar = CarsInfo.find(car => car.id === id);
@@ -29,6 +36,7 @@ function App() {
     const newCars = [...CarsInfo];
     newCars[indexOfEdited] = updatedCarValues;
 
+    localStorage.setItem("cars", JSON.stringify(newCars));
     setCarInfo(newCars);
   };
 
@@ -39,6 +47,7 @@ function App() {
     const newCars = [...CarsInfo];
     newCars.splice(indexOfEdited, 1);
 
+    localStorage.setItem("cars", JSON.stringify(newCars));
     setCarInfo(newCars);
   };
 
@@ -53,6 +62,7 @@ function App() {
     const newCars = [...CarsInfo];
     newCars.push(updatedCarValues);
 
+    localStorage.setItem("cars", JSON.stringify(newCars));
     setCarInfo(newCars);
   };
 
