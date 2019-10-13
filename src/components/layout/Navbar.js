@@ -27,7 +27,7 @@ const Navbar = () => {
       <Link to="/cars">
         <FontAwesomeIcon icon={faCar} size={"3x"} />
       </Link>
-      <Link to="/route">
+      <Link to="/routes">
         <FontAwesomeIcon icon={faRoad} size={"3x"} />
       </Link>
       <Link to="/summary">

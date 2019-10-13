@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +9,7 @@ import uuid from "uuid";
 
 import Navbar from "./components/layout/Navbar";
 import Cars from "./components/pages/Cars";
+import Routes from "./components/pages/Routes";
 import "./App.css";
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
               />
             )}
           />
+          <Route exact path="/routes" render={props => <Routes {...props} />} />
         </Switch>
       </Router>
     </div>
