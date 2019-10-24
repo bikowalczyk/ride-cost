@@ -62,6 +62,11 @@ function App() {
     setCarInfo(newCars);
   };
 
+  // Route info -> stops with adress info inside
+  // Current location should be added dynamicly, stops should be only in state - not in LS
+  // It should be stored as lat/long
+  const [RouteInfo, setRouteInfo] = useState([{}]);
+
   return (
     <div className="App">
       <Router>

@@ -13,14 +13,36 @@ const Selector = styled.div`
   color: #1d3557;
 `;
 
+const SubTitle = styled.h2`
+  font-weight: bold;
+  margin: 10px 0 10px 35%;
+  text-align: left;
+  width: 50%;
+`;
+
+const SubText = styled(SubTitle)`
+  font-weight: 200;
+  margin-left: 35%;
+  font-size: 90%;
+`;
+
 function Waypoint() {
   return (
     <Selector>
       <FontAwesomeIcon
         icon={faTimes}
-        size="2x"
-        style={{ float: "right", marginRight: "5px" }}
+        style={{
+          float: "right",
+          marginRight: "5px",
+          height: "25px",
+          width: "25px"
+        }}
       ></FontAwesomeIcon>
+      <div style={{ marginLeft: "10%" }}>
+        <SubTitle>Current Location</SubTitle>
+        <SubText>Jana Kazimierza 17a</SubText>
+        <SubText>01-248, Warszawa</SubText>
+      </div>
     </Selector>
   );
 }
