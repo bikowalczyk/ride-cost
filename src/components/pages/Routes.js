@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const AddressWrapper = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 75px);
   background-color: #1d3557;
   opacity: 0.8;
   position: absolute;
