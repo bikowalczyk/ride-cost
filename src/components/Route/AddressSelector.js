@@ -28,8 +28,8 @@ const AddressSelector = () => {
     // eslint-disable-next-line no-unused-vars
     const autocomplete = new google.maps.places.Autocomplete(input);
     geolocate();
+    autocomplete.setFields(["adr_address"]);
     autocomplete.addListener("place_changed", () => {
-      autocomplete.setFields(["adr_address"]);
       const place = autocomplete.getPlace();
 
       console.log(place);

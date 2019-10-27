@@ -25,14 +25,21 @@ const AddressWrapper = styled.div`
   z-index: 2;
 `;
 
-function Routes() {
-  const [isInput, setIsInput] = useState(true);
+const Routes = props => {
+  const {
+    CurrentLocation,
+    setCurrentLocation,
+    RouteStops,
+    setRouteStops
+  } = props;
+
+  const [isInput, setIsInput] = useState(false);
 
   return (
     <Fragment>
       <Title text="Route"></Title>
       <Wrapper>
-        <Waypoint />
+        <Waypoint setIsInput={setIsInput} />
         <Waypoint />
         <Waypoint />
       </Wrapper>
@@ -43,6 +50,6 @@ function Routes() {
       ) : null}
     </Fragment>
   );
-}
+};
 
 export default Routes;

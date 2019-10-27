@@ -64,8 +64,10 @@ function App() {
 
   // Route info -> stops with adress info inside
   // Current location should be added dynamicly, stops should be only in state - not in LS
-  // It should be stored as lat/long
-  const [RouteInfo, setRouteInfo] = useState([]);
+  // It should be stored as lat/long -> no bc it causes 2many API calls
+  // 2 states because Stops will have an option to be removed and will be rendered dynamically
+  const [CurrentLocation, setCurrentLocation] = useState();
+  const [RouteStops, setRouteStops] = useState();
 
   return (
     <div className="App">
@@ -87,7 +89,19 @@ function App() {
               />
             )}
           />
-          <Route exact path="/routes" render={props => <Routes {...props} />} />
+          <Route
+            exact
+            path="/routes"
+            render={props => (
+              <Routes
+                {...props}
+                CurrentLocation={CurrentLocation}
+                setCurrentLocation={setCurrentLocation}
+                RouteStops={RouteStops}
+                setRouteStops={setRouteStops}
+              />
+            )}
+          />
         </Switch>
       </Router>
     </div>

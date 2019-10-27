@@ -24,11 +24,16 @@ const SubText = styled(SubTitle)`
   font-weight: 200;
   margin-left: 35%;
   font-size: 90%;
+  width: 42%;
 `;
 
-function Waypoint() {
+const Waypoint = props => {
   return (
-    <Selector>
+    <Selector
+      onClick={() => {
+        props.setIsInput(true);
+      }}
+    >
       <FontAwesomeIcon
         icon={faTimes}
         style={{
@@ -49,6 +54,6 @@ function Waypoint() {
       </div>
     </Selector>
   );
-}
+};
 
 export default Waypoint;
