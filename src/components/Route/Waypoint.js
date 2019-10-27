@@ -40,8 +40,12 @@ function Waypoint() {
       ></FontAwesomeIcon>
       <div style={{ marginLeft: "10%" }}>
         <SubTitle>Current Location</SubTitle>
-        <SubText>Jana Kazimierza 17a</SubText>
-        <SubText>01-248, Warszawa</SubText>
+        <SubText>
+          <span className="street-address">Jana Kazimierza</span>,{" "}
+          <span className="postal-code">00-001</span>{" "}
+          <span className="locality">Warszawa</span>,{" "}
+          <span className="country-name">Polska</span>
+        </SubText>
       </div>
     </Selector>
   );

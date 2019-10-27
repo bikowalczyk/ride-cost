@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Waypoint from "../Route/Waypoint";
 import AddressSelector from "../Route/AddressSelector";
 
@@ -26,17 +26,21 @@ const AddressWrapper = styled.div`
 `;
 
 function Routes() {
+  const [isInput, setIsInput] = useState(true);
+
   return (
     <Fragment>
       <Title text="Route"></Title>
       <Wrapper>
-        <Waypoint text="Current Location"></Waypoint>
-        <Waypoint></Waypoint>
-        <Waypoint></Waypoint>
+        <Waypoint />
+        <Waypoint />
+        <Waypoint />
       </Wrapper>
-      <AddressWrapper>
-        <AddressSelector></AddressSelector>
-      </AddressWrapper>
+      {isInput ? (
+        <AddressWrapper>
+          <AddressSelector />
+        </AddressWrapper>
+      ) : null}
     </Fragment>
   );
 }
