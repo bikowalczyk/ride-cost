@@ -36,7 +36,18 @@ const AddressSelector = () => {
     });
   });
 
-  return <input id="searchTextField" type="text"></input>;
+  return (
+    <input
+      style={{
+        zIndex: 3,
+        position: "absolute",
+        top: "20%",
+        transform: "translateX(-50%)"
+      }}
+      id="searchTextField"
+      type="text"
+    ></input>
+  );
 };
 
 export default AddressSelector;

@@ -40,13 +40,16 @@ const Routes = props => {
       <Title text="Route"></Title>
       <Wrapper>
         <Waypoint setIsInput={setIsInput} />
-        <Waypoint />
-        <Waypoint />
       </Wrapper>
       {isInput ? (
-        <AddressWrapper>
+        <Fragment>
+          <AddressWrapper
+            onClick={() => {
+              setIsInput(false);
+            }}
+          ></AddressWrapper>
           <AddressSelector />
-        </AddressWrapper>
+        </Fragment>
       ) : null}
     </Fragment>
   );
