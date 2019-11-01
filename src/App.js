@@ -67,6 +67,7 @@ function App() {
   // It should be stored as lat/long -> no bc it causes 2many API calls
   // 2 states because Stops will have an option to be removed and will be rendered dynamically
   const [CurrentLocation, setCurrentLocation] = useState();
+  const [DestinationLocation, setDestinationLocation] = useState();
   const [RouteStops, setRouteStops] = useState();
 
   return (
@@ -97,6 +98,8 @@ function App() {
                 {...props}
                 CurrentLocation={CurrentLocation}
                 setCurrentLocation={setCurrentLocation}
+                DestinationLocation={DestinationLocation}
+                setDestinationLocation={setDestinationLocation}
                 RouteStops={RouteStops}
                 setRouteStops={setRouteStops}
               />

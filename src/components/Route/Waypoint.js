@@ -28,6 +28,7 @@ const SubText = styled(SubTitle)`
 `;
 
 const Waypoint = props => {
+  const { text } = props;
   return (
     <Selector
       onClick={() => {
@@ -44,13 +45,8 @@ const Waypoint = props => {
         }}
       ></FontAwesomeIcon>
       <div style={{ marginLeft: "10%" }}>
-        <SubTitle>Current Location</SubTitle>
-        <SubText>
-          <span className="street-address">Jana Kazimierza</span>,{" "}
-          <span className="postal-code">00-001</span>{" "}
-          <span className="locality">Warszawa</span>,{" "}
-          <span className="country-name">Polska</span>
-        </SubText>
+        <SubTitle>{text}</SubTitle>
+        <SubText>{/* PUT STATE HERE */}</SubText>
       </div>
     </Selector>
   );

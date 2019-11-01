@@ -29,17 +29,34 @@ const Routes = props => {
   const {
     CurrentLocation,
     setCurrentLocation,
+    DestinationLocation,
+    setDesitantionLocation,
     RouteStops,
     setRouteStops
   } = props;
 
   const [isInput, setIsInput] = useState(false);
+  // State to determine which waypoint element was clicked
+  const [WaypointIndicatior, setWaypointIndicator] = useState();
 
   return (
     <Fragment>
       <Title text="Route"></Title>
       <Wrapper>
-        <Waypoint setIsInput={setIsInput} />
+        <Waypoint
+          setIsInput={setIsInput}
+          text="Current Location"
+          onClick={() => {
+            setWaypointIndicator("Current");
+          }}
+        />
+        <Waypoint
+          setIsInput={setIsInput}
+          text="Destination"
+          onClick={() => {
+            setWaypointIndicator("Destination");
+          }}
+        />
       </Wrapper>
       {isInput ? (
         <Fragment>
@@ -48,7 +65,10 @@ const Routes = props => {
               setIsInput(false);
             }}
           ></AddressWrapper>
-          <AddressSelector />
+          <AddressSelector
+            setCurrentLocation={setCurrentLocation}
+            setIsInput={setIsInput}
+          />
         </Fragment>
       ) : null}
     </Fragment>

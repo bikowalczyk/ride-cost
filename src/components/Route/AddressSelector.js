@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 
 /*global google*/
 
-const AddressSelector = () => {
+const AddressSelector = props => {
+  const { setCurrentLocation, setIsInput } = props;
+
   useEffect(() => {
     var input = document.getElementById("searchTextField");
 
@@ -30,9 +32,11 @@ const AddressSelector = () => {
     geolocate();
     autocomplete.setFields(["adr_address"]);
     autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
+      const place = autocomplete.getPlace().adr_address;
 
       console.log(place);
+      setCurrentLocation(place);
+      setIsInput(false);
     });
   });
 
