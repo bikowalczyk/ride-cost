@@ -11,6 +11,7 @@ const Selector = styled.div`
   background-color: white;
   margin: 4% auto;
   color: #1d3557;
+  font-size: 1.2rem;
 `;
 
 const SubTitle = styled.h2`

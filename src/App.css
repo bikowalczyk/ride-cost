@@ -4,6 +4,7 @@
   color: white;
   height: calc(100vh - 75px);
   display: block;
+  font-family: "Roboto";
 }
 
 a {
