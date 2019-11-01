@@ -28,11 +28,12 @@ const SubText = styled(SubTitle)`
 `;
 
 const Waypoint = props => {
-  const { title, type, text } = props;
+  const { title, type, text, setIsInput, setWaypointIndicator } = props;
   return (
     <Selector
       onClick={() => {
-        props.setIsInput(true);
+        setIsInput(true);
+        setWaypointIndicator(type);
       }}
     >
       {type === "route" ? (

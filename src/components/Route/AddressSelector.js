@@ -3,7 +3,12 @@ import React, { useEffect } from "react";
 /*global google*/
 
 const AddressSelector = props => {
-  const { setCurrentLocation, setIsInput } = props;
+  const {
+    setCurrentLocation,
+    setDestinationLocation,
+    setIsInput,
+    WaypointIndicator
+  } = props;
 
   useEffect(() => {
     var input = document.getElementById("searchTextField");
@@ -25,7 +30,7 @@ const AddressSelector = props => {
         });
       }
     }
-    // I have to figure how to store the address
+    // I have to figure how to store the address - as 3 sepreate states :)
 
     // eslint-disable-next-line no-unused-vars
     const autocomplete = new google.maps.places.Autocomplete(input);
@@ -34,14 +39,30 @@ const AddressSelector = props => {
     autocomplete.addListener("place_changed", () => {
       const place = autocomplete.getPlace().formatted_address;
 
-      console.log(place);
-      setCurrentLocation(place);
-      setIsInput(false);
+      // SWITCH FOR RECOGNIZING WHICH STATE TO CHANGE
+
+      switch (WaypointIndicator) {
+        case "Current":
+          console.log(place);
+          setCurrentLocation(place);
+          setIsInput(false);
+          break;
+        case "Destination":
+          console.log(place);
+          setDestinationLocation(place);
+          setIsInput(false);
+          break;
+        default:
+          console.log("Wrong");
+          console.log(WaypointIndicator);
+          break;
+      }
     });
   });
 
   return (
     <input
+      autoFocus
       style={{
         zIndex: 3,
         position: "absolute",
