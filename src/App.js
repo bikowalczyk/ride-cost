@@ -10,6 +10,7 @@ import uuid from "uuid";
 import Navbar from "./components/layout/Navbar";
 import Cars from "./components/pages/Cars";
 import Routes from "./components/pages/Routes";
+import Summary from "./components/pages/Summary";
 import "./App.css";
 
 function App() {
@@ -102,6 +103,18 @@ function App() {
                 setDestinationLocation={setDestinationLocation}
                 RouteStops={RouteStops}
                 setRouteStops={setRouteStops}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/summary"
+            render={props => (
+              <Summary
+                {...props}
+                CurrentLocation={CurrentLocation}
+                DestinationLocation={DestinationLocation}
+                RouteStops={RouteStops}
               />
             )}
           />
