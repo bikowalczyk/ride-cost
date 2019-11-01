@@ -45,14 +45,16 @@ const Routes = props => {
       <Wrapper>
         <Waypoint
           setIsInput={setIsInput}
-          text="Current Location"
+          title="Current Location"
+          text={CurrentLocation}
           onClick={() => {
             setWaypointIndicator("Current");
           }}
         />
         <Waypoint
           setIsInput={setIsInput}
-          text="Destination"
+          title="Destination"
+          text={DestinationLocation}
           onClick={() => {
             setWaypointIndicator("Destination");
           }}
@@ -67,7 +69,9 @@ const Routes = props => {
           ></AddressWrapper>
           <AddressSelector
             setCurrentLocation={setCurrentLocation}
+            setDesitantionLocation={setDesitantionLocation}
             setIsInput={setIsInput}
+            WaypointIndicatior={WaypointIndicatior}
           />
         </Fragment>
       ) : null}

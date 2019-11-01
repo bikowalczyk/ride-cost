@@ -30,9 +30,9 @@ const AddressSelector = props => {
     // eslint-disable-next-line no-unused-vars
     const autocomplete = new google.maps.places.Autocomplete(input);
     geolocate();
-    autocomplete.setFields(["adr_address"]);
+    autocomplete.setFields(["formatted_address"]);
     autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace().adr_address;
+      const place = autocomplete.getPlace().formatted_address;
 
       console.log(place);
       setCurrentLocation(place);

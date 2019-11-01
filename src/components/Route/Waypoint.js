@@ -28,25 +28,28 @@ const SubText = styled(SubTitle)`
 `;
 
 const Waypoint = props => {
-  const { text } = props;
+  const { title, type, text } = props;
   return (
     <Selector
       onClick={() => {
         props.setIsInput(true);
       }}
     >
-      <FontAwesomeIcon
-        icon={faTimes}
-        style={{
-          float: "right",
-          marginRight: "5px",
-          height: "25px",
-          width: "25px"
-        }}
-      ></FontAwesomeIcon>
+      {type === "route" ? (
+        <FontAwesomeIcon
+          icon={faTimes}
+          style={{
+            float: "right",
+            marginRight: "5px",
+            height: "25px",
+            width: "25px"
+          }}
+        />
+      ) : null}
+
       <div style={{ marginLeft: "10%" }}>
-        <SubTitle>{text}</SubTitle>
-        <SubText>{/* PUT STATE HERE */}</SubText>
+        <SubTitle>{title}</SubTitle>
+        <SubText>{text ? text : "Click to choose a location"}</SubText>
       </div>
     </Selector>
   );
