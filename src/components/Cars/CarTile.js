@@ -91,7 +91,11 @@ const CarTile = props => {
         />
       ) : null}
 
-      <Tile onClick={() => {}}>
+      <Tile
+        onClick={() => {
+          onEditHandler(car.id, car.gprice, car.consumption, car.model, true);
+        }}
+      >
         <FontAwesomeIcon
           icon={faCheckSquare}
           size={"2x"}

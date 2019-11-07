@@ -19,7 +19,7 @@ function App() {
     JSON.parse(localStorage.getItem("cars") || "[]")
   );
 
-  const editCar = (id, fuelPrice, fuelConsumption, modelName) => {
+  const editCar = (id, fuelPrice, fuelConsumption, modelName, selected) => {
     const editedCar = CarsInfo.find(car => car.id === id);
     const indexOfEdited = CarsInfo.indexOf(editedCar);
 
@@ -28,10 +28,18 @@ function App() {
       id,
       model: modelName,
       consumption: fuelConsumption,
-      gprice: fuelPrice
+      gprice: fuelPrice,
+      selected: selected
     };
 
     const newCars = [...CarsInfo];
+    newCars.forEach(currValue => {
+      if (editedCar === currValue) {
+        return;
+      } else {
+        currValue.selected = false;
+      }
+    });
     newCars[indexOfEdited] = updatedCarValues;
 
     localStorage.setItem("cars", JSON.stringify(newCars));
@@ -54,7 +62,8 @@ function App() {
       id: uuid.v1(),
       model: modelName,
       consumption: fuelConsumption,
-      gprice: fuelPrice
+      gprice: fuelPrice,
+      selected: false
     };
 
     const newCars = [...CarsInfo];
