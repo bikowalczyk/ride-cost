@@ -15,10 +15,12 @@ const AddressSelector = props => {
 
     // Copied straight from Google
 
+    let geolocation;
+
     function geolocate() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-          var geolocation = {
+          geolocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
@@ -30,6 +32,7 @@ const AddressSelector = props => {
         });
       }
     }
+
     // I have to figure how to store the address - as 3 sepreate states :)
 
     // eslint-disable-next-line no-unused-vars

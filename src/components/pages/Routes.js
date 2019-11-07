@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Waypoint from "../Route/Waypoint";
 import AddressSelector from "../Route/AddressSelector";
+/*global google*/
 
 import Title from "../layout/Title";
 
@@ -38,6 +39,29 @@ const Routes = props => {
   const [isInput, setIsInput] = useState(false);
   // State to determine which waypoint element was clicked
   const [WaypointIndicator, setWaypointIndicator] = useState("");
+
+  // Function for auto getting user location -> I have to add some button, because of 2many calls
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function(position) {
+  //       const geolocation = {
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude
+  //       };
+  //       const geocoder = new google.maps.Geocoder();
+
+  //       geocoder.geocode({ location: geolocation }, function(results, status) {
+  //         if (status === "OK") {
+  //           console.log(results[0].formatted_address);
+  //         } else {
+  //           alert(
+  //             "Geocode was not successful for the following reason: " + status
+  //           );
+  //         }
+  //       });
+  //     });
+  //   }
+  // });
 
   return (
     <Fragment>
