@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,6 +36,14 @@ const Text = styled.h2`
 
 const Summary = props => {
   const { CurrentLocation, DestinationLocation } = props;
+  const history = useHistory();
+
+  useEffect(() => {
+    if (CurrentLocation === undefined || DestinationLocation === undefined) {
+      alert("Please choose correct locations");
+      history.push("/routes");
+    }
+  });
 
   return (
     <Fragment>

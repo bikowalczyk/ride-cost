@@ -18,6 +18,7 @@ function App() {
   const [CarsInfo, setCarInfo] = useState(
     JSON.parse(localStorage.getItem("cars") || "[]")
   );
+  const [CurrentCar, setCurrentCar] = useState();
 
   const editCar = (id, fuelPrice, fuelConsumption, modelName, selected) => {
     const editedCar = CarsInfo.find(car => car.id === id);
@@ -36,7 +37,7 @@ function App() {
 
     newCars.forEach(currValue => {
       if (editedCar === currValue) {
-        return;
+        setCurrentCar(editedCar);
       } else {
         currValue.selected = false;
       }
@@ -126,6 +127,7 @@ function App() {
                 CurrentLocation={CurrentLocation}
                 DestinationLocation={DestinationLocation}
                 RouteStops={RouteStops}
+                CurrentCar={CurrentCar}
               />
             )}
           />
