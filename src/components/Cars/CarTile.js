@@ -96,16 +96,19 @@ const CarTile = props => {
           onEditHandler(car.id, car.gprice, car.consumption, car.model, true);
         }}
       >
-        <FontAwesomeIcon
-          icon={faCheckSquare}
-          size={"2x"}
-          style={{
-            position: "absolute",
-            top: "-3px",
-            right: "-1px",
-            color: "green"
-          }}
-        />
+        {car.selected ? (
+          <FontAwesomeIcon
+            icon={faCheckSquare}
+            size={"2x"}
+            style={{
+              position: "absolute",
+              top: "-3px",
+              right: "-1px",
+              color: "green"
+            }}
+          />
+        ) : null}
+
         <h2>{car.model}</h2>
         <Row>
           <FontAwesomeIcon icon={faCoins} />

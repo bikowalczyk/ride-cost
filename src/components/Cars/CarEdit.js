@@ -99,7 +99,13 @@ const CarEdit = props => {
           style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
           onClick={() => {
-            onEditHandler(car.id, fuelPrice, fuelConsumption, modelName);
+            onEditHandler(
+              car.id,
+              fuelPrice,
+              fuelConsumption,
+              modelName,
+              car.selected
+            );
             changeedit(false);
           }}
         />

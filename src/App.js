@@ -33,6 +33,7 @@ function App() {
     };
 
     const newCars = [...CarsInfo];
+
     newCars.forEach(currValue => {
       if (editedCar === currValue) {
         return;
