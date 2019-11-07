@@ -14,6 +14,7 @@ import Summary from "./components/pages/Summary";
 import "./App.css";
 
 function App() {
+  // Instead of making another state for choosen car I will filtr the current LS
   const [CarsInfo, setCarInfo] = useState(
     JSON.parse(localStorage.getItem("cars") || "[]")
   );

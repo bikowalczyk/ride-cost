@@ -7,7 +7,8 @@ import {
   faPlus,
   faGasPump,
   faCoins,
-  faEdit
+  faEdit,
+  faCheckSquare
 } from "@fortawesome/free-solid-svg-icons";
 
 const AddTitle = styled.div`
@@ -90,7 +91,17 @@ const CarTile = props => {
         />
       ) : null}
 
-      <Tile>
+      <Tile onClick={() => {}}>
+        <FontAwesomeIcon
+          icon={faCheckSquare}
+          size={"2x"}
+          style={{
+            position: "absolute",
+            top: "-3px",
+            right: "-1px",
+            color: "green"
+          }}
+        />
         <h2>{car.model}</h2>
         <Row>
           <FontAwesomeIcon icon={faCoins} />
