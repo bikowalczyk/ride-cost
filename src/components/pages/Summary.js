@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
@@ -30,7 +30,7 @@ const Row = styled.div`
 
 const Text = styled.h2`
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 4.5vw;
   vertical-align: middle;
 `;
 
@@ -41,12 +41,12 @@ const Summary = props => {
   const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer();
 
-  function initMap() {
+  const initMap = () => {
     const map = new google.maps.Map(document.getElementById("map"));
     directionsRenderer.setMap(map);
-  }
+  };
 
-  function calcRoute() {
+  const calcRoute = () => {
     const request = {
       origin: CurrentLocation,
       destination: DestinationLocation,
@@ -56,11 +56,38 @@ const Summary = props => {
       travelMode: "DRIVING"
     };
     directionsService.route(request, function(response, status) {
-      if (status == "OK") {
+      if (status === "OK") {
         directionsRenderer.setDirections(response);
       }
     });
-  }
+  };
+
+  const calcTime = () => {
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+      {
+        origins: [CurrentLocation],
+        destinations: [DestinationLocation],
+        travelMode: "DRIVING"
+      },
+      timeCallback
+    );
+  };
+
+  // States for results
+
+  const [Duration, setDuration] = useState();
+  const [Milage, setMilage] = useState();
+  const [Distance, setDistance] = useState();
+  const [Price, setPrice] = useState();
+
+  const timeCallback = response => {
+    console.log(response);
+    const rows = response.rows[0].elements[0];
+    console.log(rows.duration.text);
+    setDuration(rows.duration.text);
+    setDistance(rows.distance.text);
+  };
 
   useEffect(() => {
     if (CurrentLocation === undefined || DestinationLocation === undefined) {
@@ -69,8 +96,10 @@ const Summary = props => {
     } else {
       initMap();
       calcRoute();
+      calcTime();
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [CurrentLocation, DestinationLocation]);
 
   return (
     <Fragment>
@@ -78,15 +107,15 @@ const Summary = props => {
       <MapPlaceholder id="map" />
       <Row>
         <FontAwesomeIcon icon={faClock} size={"2x"} />
-        <Text>1:23h</Text>
+        <Text>{Duration}</Text>
         <FontAwesomeIcon icon={faGasPump} size={"2x"} />
-        <Text>35 liters</Text>
+        <Text>{Milage} liters</Text>
       </Row>
       <Row>
         <FontAwesomeIcon icon={faRoad} size={"2x"} />
-        <Text>480 km</Text>
+        <Text>{Distance}</Text>
         <FontAwesomeIcon icon={faCoins} size={"2x"} />
-        <Text>213.42 PLN</Text>
+        <Text>{Price} PLN</Text>
       </Row>
     </Fragment>
   );
