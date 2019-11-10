@@ -35,7 +35,7 @@ const Text = styled.h2`
 `;
 
 const Summary = props => {
-  const { CurrentLocation, DestinationLocation } = props;
+  const { CurrentLocation, DestinationLocation, SelectedCar } = props;
   const history = useHistory();
 
   const directionsService = new google.maps.DirectionsService();
@@ -82,11 +82,18 @@ const Summary = props => {
   const [Price, setPrice] = useState();
 
   const timeCallback = response => {
-    console.log(response);
     const rows = response.rows[0].elements[0];
-    console.log(rows.duration.text);
     setDuration(rows.duration.text);
     setDistance(rows.distance.text);
+    setMilage(
+      (rows.distance.value / 1000 / SelectedCar.consumption).toFixed(2)
+    );
+    setPrice(
+      (
+        (rows.distance.value / 1000 / SelectedCar.consumption) *
+        SelectedCar.gprice
+      ).toFixed(2)
+    );
   };
 
   useEffect(() => {
