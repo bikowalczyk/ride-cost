@@ -38,17 +38,44 @@ const Summary = props => {
   const { CurrentLocation, DestinationLocation } = props;
   const history = useHistory();
 
+  const directionsService = new google.maps.DirectionsService();
+  const directionsRenderer = new google.maps.DirectionsRenderer();
+
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"));
+    directionsRenderer.setMap(map);
+  }
+
+  function calcRoute() {
+    const request = {
+      origin: CurrentLocation,
+      destination: DestinationLocation,
+      // Note that JavaScript allows us to access the constant
+      // using square brackets and a string value as its
+      // "property."
+      travelMode: "DRIVING"
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == "OK") {
+        directionsRenderer.setDirections(response);
+      }
+    });
+  }
+
   useEffect(() => {
     if (CurrentLocation === undefined || DestinationLocation === undefined) {
       alert("Please choose correct locations");
       history.push("/routes");
+    } else {
+      initMap();
+      calcRoute();
     }
   });
 
   return (
     <Fragment>
       <Title text="Summary"></Title>
-      <MapPlaceholder />
+      <MapPlaceholder id="map" />
       <Row>
         <FontAwesomeIcon icon={faClock} size={"2x"} />
         <Text>1:23h</Text>

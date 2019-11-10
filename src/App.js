@@ -65,7 +65,7 @@ function App() {
       model: modelName,
       consumption: fuelConsumption,
       gprice: fuelPrice,
-      selected: false
+      selected: true
     };
 
     const newCars = [...CarsInfo];
