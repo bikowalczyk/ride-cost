@@ -23,7 +23,6 @@ function App() {
   );
 
   const editCar = (id, fuelPrice, fuelConsumption, modelName, selected) => {
-
     const editedCar = CarsInfo.find(car => car.id === id);
     const indexOfEdited = CarsInfo.indexOf(editedCar);
 
@@ -31,8 +30,10 @@ function App() {
       ...editedCar,
       id,
       model: modelName,
-      consumption: Number(fuelConsumption.toString().replace(/(\d),(?=\d)/g, '$1.')),
-      gprice: Number(fuelPrice.toString().replace(/(\d),(?=\d)/g, '$1.')),
+      consumption: Number(
+        fuelConsumption.toString().replace(/(\d),(?=\d)/g, "$1.")
+      ),
+      gprice: Number(fuelPrice.toString().replace(/(\d),(?=\d)/g, "$1.")),
       selected: selected
     };
 
@@ -67,13 +68,24 @@ function App() {
     const updatedCarValues = {
       id: uuid.v1(),
       model: modelName,
-      consumption: Number(fuelConsumption.toString().replace(/(\d),(?=\d)/g, '$1.')),
-      gprice: Number(fuelPrice.toString().replace(/(\d),(?=\d)/g, '$1.')),
+      consumption: Number(
+        fuelConsumption.toString().replace(/(\d),(?=\d)/g, "$1.")
+      ),
+      gprice: Number(fuelPrice.toString().replace(/(\d),(?=\d)/g, "$1.")),
       selected: true
     };
 
     const newCars = [...CarsInfo];
+
     newCars.push(updatedCarValues);
+    newCars.forEach(currValue => {
+      if (updatedCarValues === currValue) {
+        localStorage.setItem("SelectedCar", JSON.stringify(updatedCarValues));
+        setSelectedCar(updatedCarValues);
+      } else {
+        currValue.selected = false;
+      }
+    });
 
     localStorage.setItem("cars", JSON.stringify(newCars));
     setCarInfo(newCars);
