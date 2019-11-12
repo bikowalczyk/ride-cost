@@ -109,13 +109,14 @@ const CarEdit = props => {
             changeedit(false);
           }}
         />
-        <ModelInput value={modelName} onChange={handleChangeModel}></ModelInput>
+        <ModelInput value={modelName} onChange={handleChangeModel} maxLength="40"></ModelInput>
         <Row>
           <FontAwesomeIcon icon={faCoins} size={"2x"} />
           <ValueInput
             id={car.id}
             name="gprice"
-            maxLength="4"
+            max="90"
+            type="number"
             value={fuelPrice}
             placeholder={car.gprice}
             onChange={handleChangePrice}
@@ -127,7 +128,8 @@ const CarEdit = props => {
           <ValueInput
             id={car.id}
             name="consumption"
-            maxLength="4"
+            max="90"
+            type="number"
             value={fuelConsumption}
             placeholder={car.consumption}
             onChange={handleChangeConsumption}

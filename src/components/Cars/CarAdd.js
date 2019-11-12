@@ -104,6 +104,7 @@ const CarAdd = props => {
         />
         <ModelInput
           placeholder="Model name"
+          maxLength="40"
           onChange={handleChangeModel}
         ></ModelInput>
         <Row>
@@ -111,7 +112,8 @@ const CarAdd = props => {
           <ValueInput
             placeholder="0.00"
             name="gprice"
-            maxLength="4"
+            max="99"
+            type="number"
             onChange={handleChangePrice}
           />{" "}
           <p>PLN/liter</p>
@@ -121,7 +123,8 @@ const CarAdd = props => {
           <ValueInput
             placeholder="0.00"
             name="consumption"
-            maxLength="4"
+            type="number"
+            max="99"
             onChange={handleChangeConsumption}
           />{" "}
           <p>liters/100km</p>

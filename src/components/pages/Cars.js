@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 85%;
-  margin: 0 auto;
+  margin: 5vw auto 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

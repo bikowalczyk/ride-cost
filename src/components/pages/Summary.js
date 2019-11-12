@@ -16,7 +16,7 @@ import Title from "../layout/Title";
 
 const MapPlaceholder = styled.div`
   width: 100%;
-  height: 55vh;
+  height: 50vh;
   background-color: gray;
 `;
 
@@ -55,7 +55,7 @@ const Summary = props => {
       // "property."
       travelMode: "DRIVING"
     };
-    directionsService.route(request, function(response, status) {
+    directionsService.route(request, function (response, status) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
       }
@@ -97,7 +97,10 @@ const Summary = props => {
   };
 
   useEffect(() => {
-    if (CurrentLocation === undefined || DestinationLocation === undefined) {
+    if (SelectedCar === null) {
+      alert("Please select the car you're going to drive")
+      history.push("/cars");
+    } else if (CurrentLocation === undefined || DestinationLocation === undefined) {
       alert("Please choose correct locations");
       history.push("/routes");
     } else {

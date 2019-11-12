@@ -41,27 +41,30 @@ const Routes = props => {
   const [WaypointIndicator, setWaypointIndicator] = useState("");
 
   // Function for auto getting user location -> I have to add some button, because of 2many calls
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       const geolocation = {
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude
-  //       };
-  //       const geocoder = new google.maps.Geocoder();
+  useEffect(() => {
+    if (CurrentLocation === undefined) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const geolocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          const geocoder = new google.maps.Geocoder();
 
-  //       geocoder.geocode({ location: geolocation }, function(results, status) {
-  //         if (status === "OK") {
-  //           console.log(results[0].formatted_address);
-  //         } else {
-  //           alert(
-  //             "Geocode was not successful for the following reason: " + status
-  //           );
-  //         }
-  //       });
-  //     });
-  //   }
-  // });
+          geocoder.geocode({ location: geolocation }, function (results, status) {
+            if (status === "OK") {
+              setCurrentLocation(results[0].formatted_address)
+            } else {
+              alert(
+                "Geocode was not successful for the following reason: " + status
+              );
+            }
+          });
+        });
+      }
+    }
+
+  });
 
   return (
     <Fragment>

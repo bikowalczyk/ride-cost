@@ -19,10 +19,11 @@ function App() {
     JSON.parse(localStorage.getItem("cars") || "[]")
   );
   const [SelectedCar, setSelectedCar] = useState(
-    JSON.parse(localStorage.getItem("SelectedCar") || "{}")
+    JSON.parse(localStorage.getItem("SelectedCar") || null)
   );
 
   const editCar = (id, fuelPrice, fuelConsumption, modelName, selected) => {
+
     const editedCar = CarsInfo.find(car => car.id === id);
     const indexOfEdited = CarsInfo.indexOf(editedCar);
 
@@ -30,8 +31,8 @@ function App() {
       ...editedCar,
       id,
       model: modelName,
-      consumption: fuelConsumption,
-      gprice: fuelPrice,
+      consumption: Number(fuelConsumption.toString().replace(/(\d),(?=\d)/g, '$1.')),
+      gprice: Number(fuelPrice.toString().replace(/(\d),(?=\d)/g, '$1.')),
       selected: selected
     };
 
@@ -66,8 +67,8 @@ function App() {
     const updatedCarValues = {
       id: uuid.v1(),
       model: modelName,
-      consumption: fuelConsumption,
-      gprice: fuelPrice,
+      consumption: Number(fuelConsumption.toString().replace(/(\d),(?=\d)/g, '$1.')),
+      gprice: Number(fuelPrice.toString().replace(/(\d),(?=\d)/g, '$1.')),
       selected: true
     };
 
