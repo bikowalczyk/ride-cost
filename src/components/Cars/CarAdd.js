@@ -89,17 +89,31 @@ const CarAdd = props => {
     setModelName(e.target.value);
   };
 
+  const handleClick = () => {
+    if (isNaN(fuelConsumption) || isNaN(fuelPrice)) {
+      alert("Please provide correct values for fields below");
+    } else {
+      onAddHandler(fuelPrice, fuelConsumption, modelName);
+      changeedit(false);
+    }
+  };
+
   return (
     <Fragment>
       <Wrapper onClick={() => changeedit(false)} />
-      <CarEditTile>
+      <CarEditTile
+        onKeyPress={e => {
+          if (e.key === "Enter") {
+            handleClick();
+          }
+        }}
+      >
         <FontAwesomeIcon
           icon={faCheckCircle}
           style={{ top: "1px", right: "2px", position: "absolute" }}
           size="2x"
           onClick={() => {
-            onAddHandler(fuelPrice, fuelConsumption, modelName);
-            changeedit(false);
+            handleClick();
           }}
         />
         <ModelInput
