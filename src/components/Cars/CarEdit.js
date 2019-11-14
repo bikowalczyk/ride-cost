@@ -91,7 +91,7 @@ const CarEdit = props => {
   };
 
   const handleClick = () => {
-    if (isNaN(fuelConsumption) || isNaN(fuelPrice)) {
+    if (isNaN(fuelConsumption) || isNaN(fuelPrice) || modelName.length < 3) {
       alert("Please provide correct values for fields below");
     } else {
       onEditHandler(

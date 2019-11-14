@@ -104,10 +104,14 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/cars" />} />
           <Route
             exact
-            path="/cars"
+            path="/ridecost"
+            render={() => <Redirect to="/ridecost/cars" />}
+          />
+          <Route
+            exact
+            path="/ridecost/cars"
             render={props => (
               <Cars
                 {...props}
@@ -121,7 +125,7 @@ function App() {
           />
           <Route
             exact
-            path="/routes"
+            path="/ridecost/routes"
             render={props => (
               <Routes
                 {...props}
@@ -136,7 +140,7 @@ function App() {
           />
           <Route
             exact
-            path="/summary"
+            path="/ridecost/summary"
             render={props => (
               <Summary
                 {...props}

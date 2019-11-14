@@ -55,7 +55,7 @@ const Summary = props => {
       // "property."
       travelMode: "DRIVING"
     };
-    directionsService.route(request, function (response, status) {
+    directionsService.route(request, function(response, status) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
       }
@@ -98,11 +98,14 @@ const Summary = props => {
 
   useEffect(() => {
     if (SelectedCar === null) {
-      alert("Please select the car you're going to drive")
-      history.push("/cars");
-    } else if (CurrentLocation === undefined || DestinationLocation === undefined) {
+      alert("Please select the car you're going to drive");
+      history.push("/ridecost/cars");
+    } else if (
+      CurrentLocation === undefined ||
+      DestinationLocation === undefined
+    ) {
       alert("Please choose correct locations");
-      history.push("/routes");
+      history.push("/ridecost/routes");
     } else {
       initMap();
       calcRoute();

@@ -73,9 +73,9 @@ const ModelInput = styled.input`
 
 const CarAdd = props => {
   const { changeedit, onAddHandler } = props;
-  const [fuelPrice, setFuelPrice] = useState({});
-  const [fuelConsumption, setFuelConsumption] = useState({});
-  const [modelName, setModelName] = useState({});
+  const [fuelPrice, setFuelPrice] = useState();
+  const [fuelConsumption, setFuelConsumption] = useState();
+  const [modelName, setModelName] = useState();
 
   const handleChangeConsumption = e => {
     setFuelConsumption(e.target.value);
@@ -90,7 +90,7 @@ const CarAdd = props => {
   };
 
   const handleClick = () => {
-    if (isNaN(fuelConsumption) || isNaN(fuelPrice)) {
+    if (isNaN(fuelConsumption) || isNaN(fuelPrice) || modelName == null) {
       alert("Please provide correct values for fields below");
     } else {
       onAddHandler(fuelPrice, fuelConsumption, modelName);

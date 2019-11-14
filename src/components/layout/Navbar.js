@@ -24,13 +24,13 @@ const Wrapper = styled.div`
 const Navbar = () => {
   return (
     <Wrapper>
-      <Link to="/cars">
+      <Link to="/ridecost/cars">
         <FontAwesomeIcon icon={faCar} size={"3x"} />
       </Link>
-      <Link to="/routes">
+      <Link to="/ridecost/routes">
         <FontAwesomeIcon icon={faRoad} size={"3x"} />
       </Link>
-      <Link to="/summary">
+      <Link to="/ridecost/summary">
         <FontAwesomeIcon icon={faMapMarkedAlt} size={"3x"} />
       </Link>
     </Wrapper>
