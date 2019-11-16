@@ -99,13 +99,13 @@ const Summary = props => {
   useEffect(() => {
     if (SelectedCar === null) {
       alert("Please select the car you're going to drive");
-      history.push("/ridecost/cars");
+      history.push("/cars");
     } else if (
       CurrentLocation === undefined ||
       DestinationLocation === undefined
     ) {
       alert("Please choose correct locations");
-      history.push("/ridecost/routes");
+      history.push("/routes");
     } else {
       initMap();
       calcRoute();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect
@@ -14,7 +14,6 @@ import Summary from "./components/pages/Summary";
 import "./App.css";
 
 function App() {
-  // Instead of making another state for choosen car I will filtr the current LS
   const [CarsInfo, setCarInfo] = useState(
     JSON.parse(localStorage.getItem("cars") || "[]")
   );
@@ -104,14 +103,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
+          <Route exact path="/" render={() => <Redirect to="/cars/" />} />
           <Route
             exact
-            path="/ridecost"
-            render={() => <Redirect to="/ridecost/cars" />}
-          />
-          <Route
-            exact
-            path="/ridecost/cars"
+            path="/cars/"
             render={props => (
               <Cars
                 {...props}
@@ -125,7 +120,7 @@ function App() {
           />
           <Route
             exact
-            path="/ridecost/routes"
+            path="/routes/"
             render={props => (
               <Routes
                 {...props}
@@ -140,7 +135,7 @@ function App() {
           />
           <Route
             exact
-            path="/ridecost/summary"
+            path="/summary/"
             render={props => (
               <Summary
                 {...props}
