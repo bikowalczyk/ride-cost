@@ -7,6 +7,9 @@ import Title from "../layout/Title";
 
 import styled from "styled-components";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 const Wrapper = styled.div`
   width: 85%;
   margin: 0 auto;
@@ -44,16 +47,19 @@ const Routes = props => {
   useEffect(() => {
     if (CurrentLocation === undefined) {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
           const geolocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
           const geocoder = new google.maps.Geocoder();
 
-          geocoder.geocode({ location: geolocation }, function (results, status) {
+          geocoder.geocode({ location: geolocation }, function(
+            results,
+            status
+          ) {
             if (status === "OK") {
-              setCurrentLocation(results[0].formatted_address)
+              setCurrentLocation(results[0].formatted_address);
             } else {
               alert(
                 "Geocode was not successful for the following reason: " + status
@@ -63,7 +69,6 @@ const Routes = props => {
         });
       }
     }
-
   });
 
   return (
@@ -77,6 +82,7 @@ const Routes = props => {
           type="Current"
           setWaypointIndicator={setWaypointIndicator}
         />
+        {/* For every element in routes array render waypoint */}
         <Waypoint
           setIsInput={setIsInput}
           title="Destination"
@@ -100,6 +106,10 @@ const Routes = props => {
           />
         </Fragment>
       ) : null}
+      <FontAwesomeIcon
+        style={{ height: "50px", width: "50px" }}
+        icon={faPlus}
+      />
     </Fragment>
   );
 };
