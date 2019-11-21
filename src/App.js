@@ -96,7 +96,7 @@ function App() {
   // 2 states because Stops will have an option to be removed and will be rendered dynamically
   const [CurrentLocation, setCurrentLocation] = useState();
   const [DestinationLocation, setDestinationLocation] = useState();
-  const [RouteStops, setRouteStops] = useState();
+  const [RouteStops, setRouteStops] = useState([]);
 
   return (
     <div className="App">

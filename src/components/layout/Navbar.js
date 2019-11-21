@@ -25,13 +25,25 @@ const Navbar = () => {
   return (
     <Wrapper>
       <Link to="/cars">
-        <FontAwesomeIcon icon={faCar} size={"3x"} />
+        <FontAwesomeIcon
+          style={{ padding: "10px 10vw" }}
+          icon={faCar}
+          size={"3x"}
+        />
       </Link>
       <Link to="/routes">
-        <FontAwesomeIcon icon={faRoad} size={"3x"} />
+        <FontAwesomeIcon
+          style={{ padding: "10px 10vw" }}
+          icon={faRoad}
+          size={"3x"}
+        />
       </Link>
       <Link to="/summary">
-        <FontAwesomeIcon icon={faMapMarkedAlt} size={"3x"} />
+        <FontAwesomeIcon
+          style={{ padding: "10px 10vw" }}
+          icon={faMapMarkedAlt}
+          size={"3x"}
+        />
       </Link>
     </Wrapper>
   );

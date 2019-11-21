@@ -41,7 +41,7 @@ const Routes = props => {
 
   const [isInput, setIsInput] = useState(false);
   // State to determine which waypoint element was clicked
-  const [WaypointIndicator, setWaypointIndicator] = useState("");
+  const [WaypointIndicator, setWaypointIndicator] = useState();
 
   // Function for auto getting user location -> I have to add some button, because of 2many calls
   useEffect(() => {
@@ -83,6 +83,17 @@ const Routes = props => {
           setWaypointIndicator={setWaypointIndicator}
         />
         {/* For every element in routes array render waypoint */}
+        {RouteStops.map(stop => {
+          return (
+            <Waypoint
+              setIsInput={setIsInput}
+              title="Stop"
+              text={stop}
+              type="Route"
+              setWaypointIndicator={setWaypointIndicator}
+            />
+          );
+        })}
         <Waypoint
           setIsInput={setIsInput}
           title="Destination"
@@ -103,10 +114,16 @@ const Routes = props => {
             setDestinationLocation={setDestinationLocation}
             setIsInput={setIsInput}
             WaypointIndicator={WaypointIndicator}
+            RouteStops={RouteStops}
+            setRouteStops={setRouteStops}
           />
         </Fragment>
       ) : null}
       <FontAwesomeIcon
+        onClick={() => {
+          setIsInput(true);
+          setWaypointIndicator("routeAdd");
+        }}
         style={{ height: "50px", width: "50px" }}
         icon={faPlus}
       />

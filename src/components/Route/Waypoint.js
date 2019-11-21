@@ -37,7 +37,7 @@ const Waypoint = props => {
         setWaypointIndicator(type);
       }}
     >
-      {type === "route" ? (
+      {type === "Route" ? (
         <FontAwesomeIcon
           icon={faTimes}
           style={{

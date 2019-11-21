@@ -7,6 +7,8 @@ const AddressSelector = props => {
     setCurrentLocation,
     setDestinationLocation,
     setIsInput,
+    setRouteStops,
+    RouteStops,
     WaypointIndicator
   } = props;
 
@@ -46,17 +48,24 @@ const AddressSelector = props => {
 
       switch (WaypointIndicator) {
         case "Current":
-          console.log(place);
+          // console.log(place);
           setCurrentLocation(place);
           setIsInput(false);
           break;
         case "Destination":
-          console.log(place);
+          // console.log(place);
           setDestinationLocation(place);
           setIsInput(false);
           break;
+        case "routeAdd":
+          // console.log(place);
+          const updatedRoutes = RouteStops;
+          updatedRoutes.push(place);
+          setRouteStops(updatedRoutes);
+          setIsInput(false);
+          break;
         default:
-          console.log("Wrong");
+          console.log("Wrong type");
           console.log(WaypointIndicator);
           break;
       }
@@ -70,7 +79,8 @@ const AddressSelector = props => {
         zIndex: 3,
         position: "absolute",
         top: "20%",
-        transform: "translateX(-50%)"
+        transform: "translateX(-50%)",
+        left: "50%"
       }}
       id="searchTextField"
       type="text"
