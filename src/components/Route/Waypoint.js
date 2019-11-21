@@ -29,22 +29,38 @@ const SubText = styled(SubTitle)`
 `;
 
 const Waypoint = props => {
-  const { title, type, text, setIsInput, setWaypointIndicator } = props;
+  const {
+    title,
+    type,
+    text,
+    setIsInput,
+    setWaypointIndicator,
+    currentStop,
+    updateStops
+  } = props;
   return (
     <Selector
-      onClick={() => {
+      onClick={e => {
         setIsInput(true);
         setWaypointIndicator(type);
       }}
     >
       {type === "Route" ? (
         <FontAwesomeIcon
+          onClick={e => {
+            e.stopPropagation();
+            e.nativeEvent.stopImmediatePropagation();
+            console.log("clicked");
+            updateStops(currentStop);
+            setWaypointIndicator(type);
+          }}
           icon={faTimes}
           style={{
             float: "right",
             marginRight: "5px",
             height: "25px",
-            width: "25px"
+            width: "25px",
+            zIndex: 10
           }}
         />
       ) : null}

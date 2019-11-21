@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Waypoint from "../Route/Waypoint";
 import AddressSelector from "../Route/AddressSelector";
+import uuid from "uuid";
 /*global google*/
 
 import Title from "../layout/Title";
@@ -36,7 +37,8 @@ const Routes = props => {
     DestinationLocation,
     setDestinationLocation,
     RouteStops,
-    setRouteStops
+    setRouteStops,
+    updateStops
   } = props;
 
   const [isInput, setIsInput] = useState(false);
@@ -86,9 +88,14 @@ const Routes = props => {
         {RouteStops.map(stop => {
           return (
             <Waypoint
+              key={uuid.v4()}
               setIsInput={setIsInput}
               title="Stop"
               text={stop}
+              currentStop={stop}
+              RouteStops={RouteStops}
+              setRouteStops={setRouteStops}
+              updateStops={updateStops}
               type="Route"
               setWaypointIndicator={setWaypointIndicator}
             />
