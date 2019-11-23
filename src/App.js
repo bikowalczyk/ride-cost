@@ -95,6 +95,7 @@ function App() {
     newArray.splice(RouteStops.indexOf(currentStop), 1);
     setRouteStops(newArray);
   };
+
   // Route info -> stops with adress info inside
   // Current location should be added dynamicly, stops should be only in state - not in LS
   // It should be stored as lat/long -> no bc it causes 2many API calls

@@ -41,8 +41,10 @@ const Waypoint = props => {
   return (
     <Selector
       onClick={e => {
-        setIsInput(true);
-        setWaypointIndicator(type);
+        if (type !== "Route") {
+          setIsInput(true);
+          setWaypointIndicator(type);
+        }
       }}
     >
       {type === "Route" ? (

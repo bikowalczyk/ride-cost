@@ -35,7 +35,12 @@ const Text = styled.h2`
 `;
 
 const Summary = props => {
-  const { CurrentLocation, DestinationLocation, SelectedCar } = props;
+  const {
+    CurrentLocation,
+    DestinationLocation,
+    SelectedCar,
+    RouteStops
+  } = props;
   const history = useHistory();
 
   const directionsService = new google.maps.DirectionsService();
@@ -46,6 +51,14 @@ const Summary = props => {
     directionsRenderer.setMap(map);
   };
 
+  let waypts = [];
+
+  RouteStops.forEach((e, i) => {
+    waypts.push({
+      location: RouteStops[i]
+    });
+  });
+
   const calcRoute = () => {
     const request = {
       origin: CurrentLocation,
@@ -53,7 +66,8 @@ const Summary = props => {
       // Note that JavaScript allows us to access the constant
       // using square brackets and a string value as its
       // "property."
-      travelMode: "DRIVING"
+      travelMode: "DRIVING",
+      waypoints: waypts
     };
     directionsService.route(request, function(response, status) {
       if (status === "OK") {
