@@ -91,7 +91,7 @@ function App() {
   };
 
   const updateStops = currentStop => {
-    const newArray = RouteStops;
+    const newArray = [...RouteStops];
     newArray.splice(RouteStops.indexOf(currentStop), 1);
     setRouteStops(newArray);
   };

@@ -54,7 +54,7 @@ const Waypoint = props => {
             e.nativeEvent.stopImmediatePropagation();
             console.log("clicked");
             updateStops(currentStop);
-            setWaypointIndicator(type);
+            // setWaypointIndicator(type);
           }}
           icon={faTimes}
           style={{
