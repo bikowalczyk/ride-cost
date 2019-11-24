@@ -91,7 +91,7 @@ const Routes = props => {
             <Waypoint
               key={uuid.v4()}
               setIsInput={setIsInput}
-              title="Stop"
+              title="Waypoint"
               text={stop}
               currentStop={stop}
               RouteStops={RouteStops}
