@@ -72,21 +72,23 @@ const Summary = props => {
     directionsService.route(request, function(response, status) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
+        // console.log(response);
+        timeCallback(response);
       }
     });
   };
 
-  const calcTime = () => {
-    var service = new google.maps.DistanceMatrixService();
-    service.getDistanceMatrix(
-      {
-        origins: [CurrentLocation],
-        destinations: [DestinationLocation],
-        travelMode: "DRIVING"
-      },
-      timeCallback
-    );
-  };
+  // const calcTime = () => {
+  //   var service = new google.maps.DistanceMatrixService();
+  //   service.getDistanceMatrix(
+  //     {
+  //       origins: [CurrentLocation],
+  //       destinations: [DestinationLocation],
+  //       travelMode: "DRIVING"
+  //     },
+  //     timeCallback
+  //   );
+  // };
 
   // States for results
 
@@ -96,15 +98,30 @@ const Summary = props => {
   const [Price, setPrice] = useState();
 
   const timeCallback = response => {
-    const rows = response.rows[0].elements[0];
-    setDuration(rows.duration.text);
-    setDistance(rows.distance.text);
-    setMilage(
-      (rows.distance.value / 1000 / SelectedCar.consumption).toFixed(2)
-    );
+    const legs = response.routes[0].legs;
+
+    let timeTotal = 0;
+    let distanceTotal = 0;
+
+    legs.forEach((e, i) => {
+      timeTotal += e.duration.value;
+      distanceTotal += e.distance.value;
+    });
+
+    function convertMinsToHrsMins(mins) {
+      let h = Math.floor(mins / 60);
+      let m = mins % 60;
+      h = h < 10 ? "0" + h : h;
+      m = m < 10 ? "0" + m : m;
+      return `${h}:${m}`;
+    }
+
+    setDuration(convertMinsToHrsMins(Math.floor(timeTotal / 60)));
+    setDistance((distanceTotal / 1000).toFixed(2));
+    setMilage((distanceTotal / 1000 / SelectedCar.consumption).toFixed(2));
     setPrice(
       (
-        (rows.distance.value / 1000 / SelectedCar.consumption) *
+        (distanceTotal / 1000 / SelectedCar.consumption) *
         SelectedCar.gprice
       ).toFixed(2)
     );
@@ -123,7 +140,6 @@ const Summary = props => {
     } else {
       initMap();
       calcRoute();
-      calcTime();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [CurrentLocation, DestinationLocation]);
@@ -134,13 +150,13 @@ const Summary = props => {
       <MapPlaceholder id="map" />
       <Row>
         <FontAwesomeIcon icon={faClock} size={"2x"} />
-        <Text>{Duration}</Text>
+        <Text>{Duration} min</Text>
         <FontAwesomeIcon icon={faGasPump} size={"2x"} />
         <Text>{Milage} liters</Text>
       </Row>
       <Row>
         <FontAwesomeIcon icon={faRoad} size={"2x"} />
-        <Text>{Distance}</Text>
+        <Text>{Distance} Km</Text>
         <FontAwesomeIcon icon={faCoins} size={"2x"} />
         <Text>{Price} PLN</Text>
       </Row>
