@@ -78,18 +78,6 @@ const Summary = props => {
     });
   };
 
-  // const calcTime = () => {
-  //   var service = new google.maps.DistanceMatrixService();
-  //   service.getDistanceMatrix(
-  //     {
-  //       origins: [CurrentLocation],
-  //       destinations: [DestinationLocation],
-  //       travelMode: "DRIVING"
-  //     },
-  //     timeCallback
-  //   );
-  // };
-
   // States for results
 
   const [Duration, setDuration] = useState();
@@ -150,13 +138,13 @@ const Summary = props => {
       <MapPlaceholder id="map" />
       <Row>
         <FontAwesomeIcon icon={faClock} size={"2x"} />
-        <Text>{Duration} min</Text>
+        <Text>{Duration}h</Text>
         <FontAwesomeIcon icon={faGasPump} size={"2x"} />
         <Text>{Milage} liters</Text>
       </Row>
       <Row>
         <FontAwesomeIcon icon={faRoad} size={"2x"} />
-        <Text>{Distance} Km</Text>
+        <Text>{Distance} km</Text>
         <FontAwesomeIcon icon={faCoins} size={"2x"} />
         <Text>{Price} PLN</Text>
       </Row>

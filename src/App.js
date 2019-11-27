@@ -61,6 +61,10 @@ function App() {
 
     localStorage.setItem("cars", JSON.stringify(newCars));
     setCarInfo(newCars);
+    if (!newCars.find(car => car.selected === true)) {
+      localStorage.removeItem("SelectedCar");
+      setSelectedCar(null);
+    }
   };
 
   const addCar = (fuelPrice, fuelConsumption, modelName) => {
