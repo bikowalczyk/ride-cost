@@ -13,8 +13,10 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   width: 85%;
-  max-height: 75%
-  margin: 0 auto;
+  // max-height: 75%
+  overflow: auto;
+  max-height: 480px;
+  margin: 0 auto 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
