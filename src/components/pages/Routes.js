@@ -13,6 +13,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   width: 85%;
+  max-width: 600px
   // max-height: 75%
   overflow: auto;
   max-height: 480px;

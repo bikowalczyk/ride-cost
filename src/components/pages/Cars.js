@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 85%;
+  max-width: 600px;
   margin: 5vw auto 0;
   display: flex;
   flex-wrap: wrap;

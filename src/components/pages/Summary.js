@@ -23,6 +23,7 @@ const MapPlaceholder = styled.div`
 const Row = styled.div`
   display: flex;
   width: 80%;
+  max-width: 600px;
   justify-content: space-between;
   align-items: center;
   margin: 20px auto 0;
@@ -30,7 +31,7 @@ const Row = styled.div`
 
 const Text = styled.h2`
   font-weight: bold;
-  font-size: 4.5vw;
+  font-size: 25px;
   vertical-align: middle;
 `;
 

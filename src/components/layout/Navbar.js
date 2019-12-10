@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: white;
+  align-itself: center;
 `;
 
 const Navbar = () => {
@@ -26,21 +27,21 @@ const Navbar = () => {
     <Wrapper>
       <Link to="/cars">
         <FontAwesomeIcon
-          style={{ padding: "10px 10vw" }}
+          style={{ padding: "10px 20px" }}
           icon={faCar}
           size={"3x"}
         />
       </Link>
       <Link to="/routes">
         <FontAwesomeIcon
-          style={{ padding: "10px 10vw" }}
+          style={{ padding: "10px 20px" }}
           icon={faRoad}
           size={"3x"}
         />
       </Link>
       <Link to="/summary">
         <FontAwesomeIcon
-          style={{ padding: "10px 10vw" }}
+          style={{ padding: "10px 20px" }}
           icon={faMapMarkedAlt}
           size={"3x"}
         />
