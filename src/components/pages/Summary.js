@@ -31,7 +31,7 @@ const Row = styled.div`
 
 const Text = styled.h2`
   font-weight: bold;
-  font-size: 25px;
+  font-size: 1.2rem;
   vertical-align: middle;
 `;
 
