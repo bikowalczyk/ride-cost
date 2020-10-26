@@ -7,7 +7,7 @@ import {
   faGasPump,
   faCoins,
   faRoad,
-  faClock
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Title from "../layout/Title";
@@ -35,12 +35,12 @@ const Text = styled.h2`
   vertical-align: middle;
 `;
 
-const Summary = props => {
+const Summary = (props) => {
   const {
     CurrentLocation,
     DestinationLocation,
     SelectedCar,
-    RouteStops
+    RouteStops,
   } = props;
   const history = useHistory();
 
@@ -56,7 +56,7 @@ const Summary = props => {
 
   RouteStops.forEach((e, i) => {
     waypts.push({
-      location: RouteStops[i]
+      location: RouteStops[i],
     });
   });
 
@@ -68,9 +68,9 @@ const Summary = props => {
       // using square brackets and a string value as its
       // "property."
       travelMode: "DRIVING",
-      waypoints: waypts
+      waypoints: waypts,
     };
-    directionsService.route(request, function(response, status) {
+    directionsService.route(request, function (response, status) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
         // console.log(response);
@@ -86,7 +86,7 @@ const Summary = props => {
   const [Distance, setDistance] = useState();
   const [Price, setPrice] = useState();
 
-  const timeCallback = response => {
+  const timeCallback = (response) => {
     const legs = response.routes[0].legs;
 
     let timeTotal = 0;
@@ -109,10 +109,8 @@ const Summary = props => {
     setDistance((distanceTotal / 1000).toFixed(2));
     setMilage((distanceTotal / 1000 / SelectedCar.consumption).toFixed(2));
     setPrice(
-      (
-        (distanceTotal / 1000 / SelectedCar.consumption) *
+      (distanceTotal / 1000 / SelectedCar.consumption).toFixed(2) *
         SelectedCar.gprice
-      ).toFixed(2)
     );
   };
 
