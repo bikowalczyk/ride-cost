@@ -6,7 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
-    "dexie": "^2.0.4",
+    "dexie": "^3.2.2",
     "google-maps-react": "^2.0.6",
     "localforage": "^1.9.0",
     "number-to-words": "^1.2.4",
